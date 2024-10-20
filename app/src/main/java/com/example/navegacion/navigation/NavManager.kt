@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.navegacion.views.DetailView
 import com.example.navegacion.views.HomeView
+import com.example.navegacion.views.FallOfMacView
 
 @Composable
 fun NavManager(){
@@ -23,6 +24,15 @@ fun NavManager(){
             val id = it.arguments?.getInt("id") ?: 0
             val opcional = it.arguments?.getString("opcional") ?: ""
             DetailView(navController, id, opcional)
+        }
+
+        composable("Fall/{id}/?{opcional}", arguments = listOf(
+            navArgument("id") { type = NavType.IntType },
+            navArgument("opcional") { type = NavType.StringType },
+        )){
+            val id = it.arguments?.getInt("id") ?: 0
+            val opcional = it.arguments?.getString("opcional") ?: ""
+            FallOfMacView(navController, id, opcional)
         }
     }
 }

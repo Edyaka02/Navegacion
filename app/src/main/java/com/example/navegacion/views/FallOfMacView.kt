@@ -10,7 +10,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -28,13 +27,13 @@ import com.example.navegacion.components.TitleView
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun DetailView(navController: NavController, id: Int, opcional: String?) {
+fun FallOfMacView(navController: NavController, id: Int, opcional: String?) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { TitleBar(name = "Detail view") },
+                title = { TitleBar(name = "The Fall of Mac") },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = Color.Blue
+                    containerColor = Color(0,203, 80, 255)
                 ),
                 navigationIcon = {
                     MainIconButton(icon = Icons.Default.ArrowBack) {
@@ -44,18 +43,18 @@ fun DetailView(navController: NavController, id: Int, opcional: String?) {
             )
         }
     ) {
-        ContentDetailView(navController, id, opcional)
+        ContentFallOfMacView(navController, id, opcional)
     }
 }
 
 @Composable
-fun ContentDetailView(navController: NavController, id: Int, opcional: String?) {
+fun ContentFallOfMacView(navController: NavController, id: Int, opcional: String?) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TitleView(name = "Detail View")
+        TitleView(name = "The Fall of Mac")
         Space()
         TitleView(name = id.toString())
         Space()
@@ -64,12 +63,8 @@ fun ContentDetailView(navController: NavController, id: Int, opcional: String?) 
         }else{
             TitleView(name = opcional.orEmpty())
         }
-        MainButton(name = "The Fall of Mac", backColor = Color.Blue, color = Color.White) {
-            navController.navigate("Fall/${id}/?${opcional}")
+        MainButton(name = "Return Home", backColor = Color(0,203, 80, 255), color = Color.White) {
+            navController.navigate("Home")
         }
-        MainButton(name = "Return home", backColor = Color.Blue, color = Color.White) {
-            navController.popBackStack()
-        }
-
     }
 }
